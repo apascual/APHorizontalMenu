@@ -18,7 +18,7 @@ it simply add the following line to your Podfile:
 
 ## Screenshot
 
-![iPhone](https://raw.githubusercontent.com/apascual/APHorizontalMenu/master/iPhone.png)
+![iPhone](https://raw.githubusercontent.com/apascual/APHorizontalMenu/master/Images/iPhone.png)
 
 ## Author
 
