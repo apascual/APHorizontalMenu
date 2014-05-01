@@ -1,0 +1,14 @@
+PODS:
+  - APHorizontalMenu (1.0)
+
+DEPENDENCIES:
+  - APHorizontalMenu (from `https://github.com/apascual/APHorizontalMenu.git`)
+
+EXTERNAL SOURCES:
+  APHorizontalMenu:
+    :git: https://github.com/apascual/APHorizontalMenu.git
+
+SPEC CHECKSUMS:
+  APHorizontalMenu: 4ff4cbedb39988502effb514d18c74d470638d6b
+
+COCOAPODS: 0.32.1
