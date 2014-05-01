@@ -16,6 +16,10 @@ it simply add the following line to your Podfile:
 
     pod "APHorizontalMenu"
 
+## Screenshot
+
+![iPhone](https://raw.githubusercontent.com/apascual/APHorizontalMenu/master/iPhone.png)
+
 ## Author
 
 Abel Pascual, abelpascual@gmail.com
