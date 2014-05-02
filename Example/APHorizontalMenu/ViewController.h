@@ -11,6 +11,7 @@
 
 @interface ViewController : UIViewController <APHorizontalMenuSelectDelegate>
 
+@property (strong, nonatomic) NSArray *values;
 @property (weak, nonatomic) IBOutlet APHorizontalMenu *horizontalMenu;
 
 @end

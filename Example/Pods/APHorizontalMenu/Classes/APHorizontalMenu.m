@@ -8,6 +8,70 @@
 
 #import "APHorizontalMenu.h"
 
+@implementation APHorizontalMenuCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellWidth:(float)width cellHeight:(float)height
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self)
+    {
+        self.cellWidth = width;
+        self.cellHeight = height;
+        [self _configCell];
+    }
+    return self;
+}
+
++ (instancetype)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellWidth:(float)width cellHeight:(float)height
+{
+    return [[self alloc] initWithStyle:style reuseIdentifier:reuseIdentifier cellWidth:width cellHeight:height];
+}
+
+- (void)_configCell
+{
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
+    self.transform = CGAffineTransformMakeRotation(M_PI_2);
+    self.backgroundColor = [UIColor clearColor];
+    self.textLabel.textColor = AP_HORIZONTAL_MENU_TEXT_COLOR_DEFAULT;
+    self.textLabel.highlightedTextColor = AP_HORIZONTAL_MENU_TEXT_SELECTED_COLOR_DEFAULT;
+    
+    self.bgColorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.cellWidth, self.cellHeight)];
+    self.bgColorView.backgroundColor = AP_HORIZONTAL_MENU_CELL_SELECTED_COLOR_DEFAULT;
+    self.bgColorView.layer.masksToBounds = YES;
+    [self setSelectedBackgroundView:self.bgColorView];
+    
+    self.customView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.cellWidth, self.cellHeight)];
+    self.customView.contentMode = UIViewContentModeScaleAspectFit;
+    self.customView.hidden = YES;
+    self.customView.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.customView];
+}
+
+- (void)setValue:(id)value
+{
+    self.textLabel.text = @"";
+    _customView.hidden = NO;
+
+    if ([value isKindOfClass:[NSString class]])
+    {
+        _customView.hidden = YES;
+        self.textLabel.text = value;
+    }
+    else if ([value isKindOfClass:[UIImage class]])
+    {
+        _customView.image = value;
+    }
+    else if ([value isKindOfClass:[UIView class]])
+    {
+        _customView.image = nil;
+        UIView *view = value;
+        view.center = CGPointMake(self.cellWidth / 2, self.cellHeight / 2);
+        [_customView addSubview:view];
+    }
+}
+
+@end
+
 @interface APHorizontalMenu ()
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -137,24 +201,15 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString* reuseIdentifier = @"Cell";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    APHorizontalMenuCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if(!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        cell.textLabel.textAlignment=NSTextAlignmentCenter;
-        cell.transform = CGAffineTransformMakeRotation(M_PI_2);
-        cell.backgroundColor = [UIColor clearColor];
+        cell = [APHorizontalMenuCell cellWithStyle:UITableViewCellStyleDefault
+                                   reuseIdentifier:@"Cell"
+                                         cellWidth:self.cellWidth
+                                        cellHeight:self.tableView.frame.size.height];
     }
-    
-    cell.textLabel.textColor = self.textColor;
-    cell.textLabel.highlightedTextColor = self.textSelectedColor;
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = self.cellSelectedColor;
-    bgColorView.layer.masksToBounds = YES;
-    [cell setSelectedBackgroundView:bgColorView];
-    
-    cell.textLabel.text = [self.values objectAtIndex:indexPath.row];
-
+    [cell setValue:[self.values objectAtIndex:indexPath.row]];
     return cell;
 }
 

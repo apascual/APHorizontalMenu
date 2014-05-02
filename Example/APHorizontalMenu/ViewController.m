@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.horizontalMenu.values = @[@"Item 1", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Item 6", @"Item 7", @"Item 8", @"Item 9", @"Item 10"];
+    
+    UIImage *image = [UIImage imageNamed:@"large1"];
+    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    view.image = image;
+    self.values = @[@"Item 1", image, @"Item 3", view, @"Item 5", @"Item 6", @"Item 7", @"Item 8", @"Item 9", @"Item 10"];
+    
+	self.horizontalMenu.values = self.values;
     self.horizontalMenu.delegate = self;
     
     // Optional settings
@@ -28,12 +34,12 @@
     //self.horizontalMenu.visibleItems = 3;
     
     APHorizontalMenu *menu2 = [[APHorizontalMenu alloc] initWithFrame:CGRectMake(0, 200, 320, 40)];
-    menu2.values = @[@"Item 1", @"Item 2", @"Item 3", @"Item 4", @"Item 5", @"Item 6", @"Item 7", @"Item 8", @"Item 9", @"Item 10"];
+    menu2.values = self.values;
     [self.view addSubview:menu2];
 }
 
 - (void)horizontalMenu:(id)horizontalMenu didSelectPosition:(NSInteger)index {
-    NSLog(@"APHorizontalMenu selection: %d", index);
+    NSLog(@"APHorizontalMenu selection: %ld", (long)index);
 }
 
 @end

@@ -15,12 +15,20 @@
 #define AP_HORIZONTAL_MENU_TEXT_COLOR_DEFAULT [UIColor whiteColor]
 #define AP_HORIZONTAL_MENU_TEXT_SELECTED_COLOR_DEFAULT [UIColor grayColor]
 
+@interface APHorizontalMenuCell : UITableViewCell
+@property (nonatomic, strong) UIImageView *customView;
+@property (nonatomic, strong) UIView *bgColorView;
+@property (nonatomic, strong) id value;
+@property (nonatomic, assign) float cellWidth;
+@property (nonatomic, assign) float cellHeight;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellWidth:(float)width cellHeight:(float)height;
++ (instancetype)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellWidth:(float)width cellHeight:(float)height;
+@end
+
 // Protocol to get the selected item
 @protocol APHorizontalMenuSelectDelegate <NSObject>
-
 @required
 - (void)horizontalMenu:(id)horizontalMenu didSelectPosition:(NSInteger)index;
-
 @end
 
 @interface APHorizontalMenu : UIView <UITableViewDataSource, UITableViewDelegate>
