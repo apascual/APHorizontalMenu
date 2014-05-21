@@ -142,6 +142,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         cell.textLabel.textAlignment=NSTextAlignmentCenter;
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.transform = CGAffineTransformMakeRotation(M_PI_2);
         cell.backgroundColor = [UIColor clearColor];
     }
