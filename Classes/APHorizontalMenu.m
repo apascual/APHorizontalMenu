@@ -144,6 +144,7 @@
         cell.textLabel.textAlignment=NSTextAlignmentCenter;
         cell.transform = CGAffineTransformMakeRotation(M_PI_2);
         cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     
     cell.textLabel.textColor = self.textColor;
