@@ -33,7 +33,7 @@
 }
 
 - (void)horizontalMenu:(id)horizontalMenu didSelectPosition:(NSInteger)index {
-    NSLog(@"APHorizontalMenu selection: %d", index);
+    NSLog(@"APHorizontalMenu selection: %ld", (long)index);
 }
 
 @end

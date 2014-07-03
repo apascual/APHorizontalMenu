@@ -50,9 +50,13 @@
         // Number of items visible in iPad
         _visibleItems = 5;
     }
+}
+
+- (void)createMenuControl {
+    [self.tableView removeFromSuperview];
+    self.tableView=nil;
     
     CGRect frame = CGRectMake(0, 0, self.frame.size.height,self.frame.size.width);
-    
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource = self;
@@ -66,6 +70,12 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView setDecelerationRate: UIScrollViewDecelerationRateNormal];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self createMenuControl];
+    [self update];
 }
 
 #pragma mark - Custom setters
@@ -142,7 +152,6 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         cell.textLabel.textAlignment=NSTextAlignmentCenter;
-        cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.transform = CGAffineTransformMakeRotation(M_PI_2);
         cell.backgroundColor = [UIColor clearColor];
     }

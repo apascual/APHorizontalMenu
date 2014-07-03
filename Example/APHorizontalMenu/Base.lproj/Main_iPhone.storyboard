@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="FFH-lQ-W0Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="FFH-lQ-W0Z">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -16,13 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iQN-aa-VLS" customClass="APHorizontalMenu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQN-aa-VLS" customClass="APHorizontalMenu">
                                 <rect key="frame" x="0.0" y="20" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rFR-Ko-iHR"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iQN-aa-VLS" secondAttribute="trailing" id="52F-hA-gdg"/>
+                            <constraint firstItem="iQN-aa-VLS" firstAttribute="leading" secondItem="SlQ-r5-d2t" secondAttribute="leading" id="MFp-sh-bT0"/>
+                            <constraint firstItem="iQN-aa-VLS" firstAttribute="top" secondItem="HIn-h1-4F8" secondAttribute="bottom" id="qKR-1p-AKI"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="horizontalMenu" destination="iQN-aa-VLS" id="6Ft-He-YFM"/>
