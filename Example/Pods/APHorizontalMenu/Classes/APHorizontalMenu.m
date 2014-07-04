@@ -43,6 +43,7 @@
     _cellBackgroundColor = AP_HORIZONTAL_MENU_CELL_BACKGROUND_COLOR_DEFAULT;
     _textColor = AP_HORIZONTAL_MENU_TEXT_COLOR_DEFAULT;
     _textSelectedColor = AP_HORIZONTAL_MENU_TEXT_SELECTED_COLOR_DEFAULT;
+    _textFont = AP_HORIZONTAL_MENU_TEXT_FONT;
     
     // Number of items visibles in iPhone / iPod Touch
     _visibleItems = 3;
@@ -120,6 +121,11 @@
     [self update];
 }
 
+- (void)setTextFont:(UIFont *)textFont {
+    _textFont = textFont;
+    [self update];
+}
+
 - (void)update {
     self.cellWidth = self.frame.size.width/self.visibleItems;
     self.backgroundColor = self.cellBackgroundColor;
@@ -159,6 +165,7 @@
         cell.backgroundColor = [UIColor clearColor];
     }
     
+    cell.textLabel.font = self.textFont;
     cell.textLabel.textColor = self.textColor;
     cell.textLabel.highlightedTextColor = self.textSelectedColor;
     UIView *bgColorView = [[UIView alloc] init];
