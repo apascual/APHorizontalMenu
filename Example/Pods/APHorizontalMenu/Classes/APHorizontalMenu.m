@@ -130,7 +130,10 @@
     self.clipsToBounds = YES;
     
     [self.tableView reloadData];
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if(self.values.count > self.selectedIndex)
+    {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    }
 }
 
 #pragma mark - UITableView control
