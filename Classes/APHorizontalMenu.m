@@ -155,26 +155,35 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString* reuseIdentifier = @"Cell";
+    
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    
     if(!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        cell.textLabel.textAlignment=NSTextAlignmentCenter;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         cell.transform = CGAffineTransformMakeRotation(M_PI_2);
         cell.backgroundColor = [UIColor clearColor];
+        
+        UILabel* txtItemTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.cellWidth, self.frame.size.height)];
+        txtItemTitle.font = self.textFont;
+        txtItemTitle.textColor = self.textColor;
+        txtItemTitle.highlightedTextColor = self.textSelectedColor;
+        txtItemTitle.textAlignment = NSTextAlignmentCenter;
+        txtItemTitle.tag = 1001;
+        
+        [cell.contentView addSubview:txtItemTitle];
     }
     
-    cell.textLabel.font = self.textFont;
-    cell.textLabel.textColor = self.textColor;
-    cell.textLabel.highlightedTextColor = self.textSelectedColor;
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = self.cellSelectedColor;
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     
-    cell.textLabel.text = [self.values objectAtIndex:indexPath.row];
-
+    UILabel* txtItemTitle = [cell viewWithTag:1001];
+    txtItemTitle.text = [self.values objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
