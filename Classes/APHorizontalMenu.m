@@ -181,7 +181,7 @@
     bgColorView.layer.masksToBounds = YES;
     [cell setSelectedBackgroundView:bgColorView];
     
-    UILabel* txtItemTitle = [cell viewWithTag:1001];
+    UILabel* txtItemTitle = (UILabel *)[cell viewWithTag:1001];
     txtItemTitle.text = [self.values objectAtIndex:indexPath.row];
     
     return cell;
