@@ -15,6 +15,8 @@
 #define AP_HORIZONTAL_MENU_TEXT_COLOR_DEFAULT [UIColor whiteColor]
 #define AP_HORIZONTAL_MENU_TEXT_SELECTED_COLOR_DEFAULT [UIColor grayColor]
 #define AP_HORIZONTAL_MENU_TEXT_FONT [UIFont boldSystemFontOfSize:16.0]
+#define AP_HORIZONTAL_MENU_HMARGIN 0.0f
+#define AP_HORIZONTAL_MENU_VMARGIN 0.0f
 
 // Protocol to get the selected item
 @protocol APHorizontalMenuSelectDelegate <NSObject>
@@ -37,5 +39,8 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *textSelectedColor;
 @property (nonatomic, strong) UIFont *textFont;
+
+@property (nonatomic) CGFloat horizontalMargin;
+@property (nonatomic) CGFloat verticalMargin;
 
 @end

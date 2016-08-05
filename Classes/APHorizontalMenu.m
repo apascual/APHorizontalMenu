@@ -44,6 +44,8 @@
     _textColor = AP_HORIZONTAL_MENU_TEXT_COLOR_DEFAULT;
     _textSelectedColor = AP_HORIZONTAL_MENU_TEXT_SELECTED_COLOR_DEFAULT;
     _textFont = AP_HORIZONTAL_MENU_TEXT_FONT;
+    _horizontalMargin = AP_HORIZONTAL_MENU_HMARGIN;
+    _verticalMargin = AP_HORIZONTAL_MENU_VMARGIN;
     
     // Number of items visibles in iPhone / iPod Touch
     _visibleItems = 3;
@@ -166,7 +168,7 @@
         cell.transform = CGAffineTransformMakeRotation(M_PI_2);
         cell.backgroundColor = [UIColor clearColor];
         
-        UILabel* txtItemTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.cellWidth, self.frame.size.height)];
+        UILabel* txtItemTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.horizontalMargin, self.verticalMargin, self.cellWidth-(self.horizontalMargin*2), self.frame.size.height-(self.verticalMargin*2))];
         txtItemTitle.font = self.textFont;
         txtItemTitle.textColor = self.textColor;
         txtItemTitle.highlightedTextColor = self.textSelectedColor;
@@ -183,6 +185,7 @@
     
     UILabel* txtItemTitle = (UILabel *)[cell viewWithTag:1001];
     txtItemTitle.text = [self.values objectAtIndex:indexPath.row];
+    txtItemTitle.numberOfLines = 0;
     
     return cell;
 }
