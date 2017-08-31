@@ -202,7 +202,10 @@
     {
         CGPoint point = [self convertPoint:CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0) toView:self.tableView];
         NSIndexPath* centerIndexPath = [self.tableView indexPathForRowAtPoint:point];
-        [self.tableView selectRowAtIndexPath:centerIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+
+        if(!UIAccessibilityIsVoiceOverRunning()) {
+            [self.tableView selectRowAtIndexPath:centerIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }
     }
 }
 
@@ -219,7 +222,10 @@
 - (void)centerTable {
     CGPoint point = [self convertPoint:CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0) toView:self.tableView];
     NSIndexPath* centerIndexPath = [self.tableView indexPathForRowAtPoint:point];
-    [self setCurrentIndex:centerIndexPath animated:YES];
+
+    if(!UIAccessibilityIsVoiceOverRunning()) {
+        [self setCurrentIndex:centerIndexPath animated:YES];
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
