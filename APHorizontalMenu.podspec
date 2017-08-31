@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "APHorizontalMenu"
-  s.version          = "1.4"
+  s.version          = "1.5"
   s.summary          = "Customizable horizontal menu"
   s.description      = "APHorizontalMenu is a completely customizable horizontal menu that can be created in the Storyboard or directly by code."
   s.homepage         = "https://github.com/apascual/APHorizontalMenu"
